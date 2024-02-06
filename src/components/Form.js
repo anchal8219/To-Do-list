@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import {v4 as uuidv4} from "uuid"
 const Form = ({input, setInput, todos, setTodos, editTodo, setEditTodo}) => {
-    const updateTodo = (title, id, completed) => {
+    const updateTodo = (title, id, completed, created_at) => {
         const newTodo = todos.map((todo)=>
-        todo.id === id ? {title, id, completed} : todo
+        todo.id === id ? {title, id, completed, created_at} : todo
         )
         setTodos(newTodo);
         setEditTodo("");
@@ -15,20 +15,22 @@ const Form = ({input, setInput, todos, setTodos, editTodo, setEditTodo}) => {
             setInput("")
         }
     }, [setInput, editTodo])
+    // console.log(created_at)
     const onInputChange = (event)=>{
         setInput(event.target.value);
     }
 
     const onFormSubmit = (event)=>{
         event.preventDefault();
+        const currentDate = new Date().toLocaleString();
         if(!editTodo){
-            setTodos([...todos, {id:uuidv4(),title: input, completed: false}])
+            setTodos([...todos, {id:uuidv4(),title: input, completed: false, created_at: currentDate }])
             setInput("")
         }else{
-            updateTodo(input, editTodo.id, editTodo.completed )
+            updateTodo(input, editTodo.id, editTodo.completed, editTodo.created_at )
         }
-        setTodos([...todos, {id: uuidv4(), title: input, completed: false}])
-        setInput("")
+        // setTodos([...todos, {id: uuidv4(), title: input, completed: false}])
+        // setInput("")
     }
   return (
     <form onSubmit={onFormSubmit}>

@@ -32,6 +32,7 @@ const Todolist = ({todos, setTodos, setEditTodo}) => {
             onChange={(event) => event.preventDefault()}
             />
             <div>
+            <p>Created on: {todo.created_at}</p>
             <button className='button-complete task-button' onClick={()=> handleComplete(todo)}>
                 <i className='fa fa-check-circle'></i>
             </button>
