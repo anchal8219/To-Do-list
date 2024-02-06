@@ -1,6 +1,6 @@
 import React from 'react'
 
-const todolist = ({todos, setTodos, setEditTodo}) => {
+const Todolist = ({todos, setTodos, setEditTodo}) => {
     const handleComplete = (todo) => {
         setTodos(
             todos.map((item) =>{
@@ -28,7 +28,7 @@ const todolist = ({todos, setTodos, setEditTodo}) => {
             <input
             type='text'
             value={todo.title}
-            className='list'
+            className={`list ${todo.completed ? "complete" : ""}`}
             onChange={(event) => event.preventDefault()}
             />
             <div>
@@ -50,4 +50,4 @@ const todolist = ({todos, setTodos, setEditTodo}) => {
   )
 }
 
-export default todolist
+export default Todolist
