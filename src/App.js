@@ -14,7 +14,6 @@ const App=()=> {
     localStorage.setItem("todos", JSON.stringify(todos))
   }, [todos])
 
-
   return (
     <div className="container">
     <div classsName='app-wrapper'>

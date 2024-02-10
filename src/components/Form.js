@@ -15,7 +15,6 @@ const Form = ({input, setInput, todos, setTodos, editTodo, setEditTodo}) => {
             setInput("")
         }
     }, [setInput, editTodo])
-    // console.log(created_at)
     const onInputChange = (event)=>{
         setInput(event.target.value);
     }
@@ -29,8 +28,6 @@ const Form = ({input, setInput, todos, setTodos, editTodo, setEditTodo}) => {
         }else{
             updateTodo(input, editTodo.id, editTodo.completed, editTodo.created_at )
         }
-        // setTodos([...todos, {id: uuidv4(), title: input, completed: false}])
-        // setInput("")
     }
   return (
     <form onSubmit={onFormSubmit}>
