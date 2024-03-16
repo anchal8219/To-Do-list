@@ -17,7 +17,6 @@ const Todolist = ({todos, setTodos, setEditTodo}) => {
         setEditTodo(findTodo)
     }
 
-
     const handleDelete = ({id}) => {
         setTodos(todos.filter((todo) => todo.id !== id));
     }

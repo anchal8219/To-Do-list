@@ -1,44 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import Header from './components/Header';
-// import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import Form from './components/Form';
-import Todolist from './components/todolist';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Form from "./components/Form";
+import Todolist from "./components/todolist";
 
-const App=()=> {
+const App = () => {
   const initialState = JSON.parse(localStorage.getItem("todos")) || [];
-  const [input,setInput] = useState("")
+  const [input, setInput] = useState("");
   const [todos, setTodos] = useState(initialState);
   const [editTodo, setEditTodo] = useState(null);
-  useEffect(()=>{
-    localStorage.setItem("todos", JSON.stringify(todos))
-  }, [todos])
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <div className="container">
-    <div classsName='app-wrapper'>
-      <div>
-        <Header/>
+      <div classsName="app-wrapper">
+        <div>
+          <Header />
+        </div>
+        <div>
+          <Form
+            input={input}
+            setInput={setInput}
+            todos={todos}
+            setTodos={setTodos}
+            editTodo={editTodo}
+            setEditTodo={setEditTodo}
+          />
+        </div>
+        <div>
+          <Todolist
+            todos={todos}
+            setTodos={setTodos}
+            setEditTodo={setEditTodo}
+          />
+        </div>
       </div>
-      <div>
-        <Form
-          input={input}
-          setInput={setInput}
-          todos={todos}
-          setTodos={setTodos}
-          editTodo={editTodo}
-          setEditTodo={setEditTodo}
-        />
-      </div>
-      <div>
-      <Todolist todos={todos} 
-        setTodos={setTodos} 
-        setEditTodo={setEditTodo}/>
-      </div>
-    </div>
-
     </div>
   );
-}
+};
 
 export default App;
